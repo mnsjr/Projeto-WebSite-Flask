@@ -1,0 +1,73 @@
+/* PALETA PRINCIPAL */
+.bgd{
+    background-color: #0066a8
+}
+
+.bgm{
+    background-color: #2483b9
+}
+
+.bgc{
+    background-color: #3e96c6
+}
+
+
+/* NAVBAR */
+.navbar-custom {
+    height: 60px;
+}
+
+
+/* FOOTER */
+.footer-custom {
+    height: 80px;
+}
+
+
+/* TITULO DE PAGINA */
+.title{
+    font-size: 26px;
+    color: #565656;
+}
+
+
+
+/* CARD PÁGINA PERFIL */
+.card{
+  width: 400px;
+  border: none;
+  border-radius: 10px;
+
+  background-color: #fff;
+}
+
+
+
+.stats{
+
+      background: #f2f5f8 !important;
+
+    color: #000 !important;
+}
+.articles{
+  font-size:10px;
+  color: #a1aab9;
+}
+.number1{
+  font-weight:500;
+}
+.followers{
+    font-size:10px;
+  color: #a1aab9;
+
+}
+.number2{
+  font-weight:500;
+}
+.rating{
+    font-size:10px;
+  color: #a1aab9;
+}
+.number3{
+  font-weight:500;
+}

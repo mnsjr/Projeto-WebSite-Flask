@@ -1,0 +1,56 @@
+<div class="row mt-5">
+    <br>
+</div>
+<nav class="navbar footer-custom navbar-expand-lg navbar-dark bgc shadow-sm">
+  <div class="container-fluid container">
+    <a class="navbar-brand" href="{{ url_for('home') }}">python_tech_dev</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('usuarios') }}">Usuários</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('contato') }}">Contato</a>
+        </li>
+      </ul>
+      <ul class="d-flex navbar-nav">
+        {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('criar_post') }}">Criar Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('perfil') }}">Meu Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('sair') }}">Sair</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('entrar') }}">Entrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('criar_conta') }}">Criar Conta</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="navbar navbar-expand-lg navbar-dark bgc shadow-sm">
+    <div class="container d-flex justify-content-center">
+        <div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link navbar-brand" aria-current="page" href="https://github.com/mnsjr" target="_blank">desenvolvido por mnsjr</a>
+                  <br>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
