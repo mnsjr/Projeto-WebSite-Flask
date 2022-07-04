@@ -3,12 +3,40 @@
 
 {% block body %}
 
-    <div class="container">
+    <div class="container fbgm">
         <div class="row m-4">
-            <h1 class="title">Posts</h1>
+            <h1 class="fbgm">Posts</h1>
+            <h4 class="text_blue_small">Comunidade Dev Python</h4>
         </div>
         <hr>
-        <h2> dseartfgsedrtgf </h2>
+        <div class="callout">
+            {% for post in posts %}
+                <div class="container">
+                    <div class="row bg-light mt-4 p-3 meupost">
+                        <div class="col col-3">
+                            <div class="image pe-2"><img src="{{ url_for('static', filename='fotos_perfil/{}'.format(post.autor.foto_perfil)) }}" class="rounded" width="120"></div>
+                            <p class="text_blue_small">{{ post.autor.username }}</p>
+                            <hr class="fbgm">
+                            <div class="row justify-content-center">
+                                <legend class="text_blue_small">Habilidades:</legend>
+                                {% for habilidade in post.autor.habilidades.split(';') %}
+                                    <p class="text_blue">{{ habilidade }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col callout col-8">
+                            <a style="text-decoration: none" href="{{ url_for('exibir_post', post_id=post.id) }}">
+                                <h3 class="fbgm">{{ post.titulo }}
+                                    <small class="text-muted" style="font-size: 12px">- Data de Criação: {{ post.data_criacao.strftime('%d.%m.%Y') }}</small>
+                                </h3>
+                            </a>
+                            <p class="text_blue">{{ post.corpo }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+
 
 {% endblock %}

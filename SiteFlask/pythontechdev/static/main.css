@@ -11,10 +11,66 @@
     background-color: #3e96c6
 }
 
+.bgg{
+    background-color: #565656
+}
 
-/* NAVBAR */
-.navbar-custom {
-    height: 60px;
+
+
+/* PALETA PRINCIPAL FONTES TITLE */
+.title{
+    font-size: 26px;
+    color: #565656;
+}
+
+.fbgd{
+    font-size: 26px;
+    color: #0066a8
+}
+
+.fbgm{
+    font-size: 26px;
+    color: #2483b9
+}
+
+.fbgc{
+    font-size: 26px;
+    color: #3e96c6
+}
+
+
+
+/* MEU POST */
+.meupost{
+    background: #f2f5f8 !important;
+    color: #000 !important;
+}
+
+
+
+/* PALETA PRINCIPAL FONTES TEXT*/
+.text_gray{
+    font-size: 16px;
+    color: #565656;
+}
+
+.text_blue{
+    font-size: 16px;
+    color: #565656;
+}
+
+.text_blue_small{
+    font-size: 20px;
+    color: #2483b9
+}
+
+.text_azul{
+    font-size: 16px;
+    color: #2483b9
+}
+
+.text_footer{
+    font-size: 14px;
 }
 
 
@@ -23,12 +79,6 @@
     height: 80px;
 }
 
-
-/* TITULO DE PAGINA */
-.title{
-    font-size: 26px;
-    color: #565656;
-}
 
 
 
@@ -45,8 +95,7 @@
 
 .stats{
 
-      background: #f2f5f8 !important;
-
+    background: #f2f5f8 !important;
     color: #000 !important;
 }
 .articles{

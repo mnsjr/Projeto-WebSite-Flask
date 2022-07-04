@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 
+
 app = Flask(__name__, static_url_path='/static')
 
 app.config['SECRET_KEY'] = '8395f56ef02988e047b7f6a9bf462f77'

@@ -6,13 +6,14 @@
     <div class="container">
         <div class="row">
             <div class="row m-4">
-                <h1 class="title">Usuários</h1>
+                <h1 class="fbgm">Usuários</h1>
+                <br>
             </div>
-            <br>
-            <hr>
-            {% for usuario in lista_usuarios %}
 
-                <div class="col-6">
+            <hr class="fbgm">
+            {% for usuario in lista_usuarios %}
+                <div class="col-1"></div>
+                <div class="col-5">
                     <div class="container d-flex justify-content-center">
                         <div class="card">
                             <div class="d-flex align-items-center">
@@ -20,48 +21,46 @@
                                     <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(usuario.foto_perfil)) }}" class="rounded" width="140">
                                 </div>
                             <div class="ml-3 w-100">
-                               <h4 class="mb-0 mt-0">{{ usuario.username }}</h4>
-                               <span>{{ usuario.email }}</span>
-                               <hr>
+                               <h4 class="text_blue_small mb-0 mt-0">{{ usuario.username }}</h4>
+                               <span class="text_blue">{{ usuario.email }}</span>
+                               <hr class="fbgm">
                                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
                                    {% if 'Não Informado' in usuario.habilidades %}
-                                        <div class="d-flex flex-column">
-                                            <span class="articles">Techs</span>
+                                        <div class="d-flex flex-column text_blue_small">
+                                            <span class="articles">Habilidades</span>
                                             <span class="number1">0</span>
                                         </div>
                                    {% else %}
-                                        <div class="d-flex flex-column">
-                                            <span class="articles">Techs</span>
+                                        <div class="d-flex flex-column text_blue_small">
+                                            <span class="articles">Habilidades</span>
                                             <span class="number1">{{ usuario.habilidades.count(';') + 1 }}</span>
                                         </div>
                                     {% endif %}
-                                    <div class="d-flex flex-column">
-                                        <span class="articles">Funções</span>
-                                        <span class="number1">0</span>
-                                    </div>
-                                    <div class="d-flex flex-column">
+                                    <div class="d-flex flex-column text_blue_small">
                                         <span class="rating">Posts</span>
-                                        <span class="number3">0</span>
+                                        <span class="number3">{{ usuario.contar_posts() }}</span>
                                     </div>
+
                                </div>
                             </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-5 bg-light p-2">
                     <div class="row justify-content-center">
                         <div class="col-4" style="text-align: center">
-                            <legend>Habilidades</legend>
+                            <legend class="text_blue_small">Habilidades</legend>
                             {% for habilidade in usuario.habilidades.split(';') %}
-                                <button type="button" class="btn btn-success mt-2" disabled>{{ habilidade }}</button>
+                                <p class="text_blue">{{ habilidade }}</p>
                             {% endfor %}
                         </div>
                     </div>
                 </div>
+                <div class="col-1"></div>
                 <div class="row mt-5">
                     <br>
-                    <hr>
+                    <hr class="fbgm">
                     <br>
                 </div>
 

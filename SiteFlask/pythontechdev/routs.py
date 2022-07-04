@@ -1,6 +1,6 @@
-from flask import render_template, redirect, request, url_for, flash
+from flask import render_template, redirect, request, url_for, flash, abort
 from pythontechdev import app, database, bcrypt
-from pythontechdev.forms import FormEntrar, FormCriarConta, FormEditarPerfil, FormContato, FormCriarPost
+from pythontechdev.forms import FormEntrar, FormCriarConta, FormEditarPerfil, FormCriarPost, FormEditarPost
 from pythontechdev.models import Usuario, Post
 from flask_login import login_user, logout_user, current_user, login_required
 import os
@@ -9,12 +9,14 @@ from PIL import Image
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    posts = Post.query.order_by(Post.id.desc())
+    return render_template('home.html', posts=posts)
 
 
 @app.route('/Posts')
 def posts():
-    return render_template('posts.html')
+    posts = Post.query.order_by(Post.id.desc())
+    return render_template('posts.html', posts=posts)
 
 
 @app.route('/usuarios')
@@ -22,16 +24,6 @@ def posts():
 def usuarios():
     lista_usuarios = Usuario.query.all()
     return render_template('usuarios.html', lista_usuarios=lista_usuarios)
-
-
-@app.route('/contato', methods=["GET", "POST"])
-def contato():
-    cform = FormContato()
-    if cform.validate_on_submit():
-        print(f"Name:{cform.name.data}, E-mail: {cform.email.data}, message: {cform.message.data}")
-    else:
-        print("Invalid Credentials")
-    return render_template('contato.html', form=cform)
 
 
 @app.route('/entrar', methods=['GET', 'POST'])
@@ -94,8 +86,49 @@ def criar_post():
         database.session.add(post)
         database.session.commit()
         flash('Post criado com sucesso.', 'alert-success')
-        return redirect(url_for('home'))
+        return redirect(url_for('posts'))
     return render_template('criarpost.html', form=form)
+
+
+@app.route('/post/<post_id>', methods=['GET', 'POST'])
+@login_required
+def exibir_post(post_id):
+    """
+    Devolve uma nova url com o id do post em uma nova página somente com o post em questão.
+    :param post_id: id do post no db
+    :return: retorna uma página com o post selecionado
+    """
+    post = Post.query.get(post_id)
+    if current_user == post.autor:
+        form = FormEditarPost()
+        if request.method == 'GET':
+            """
+            Este método exibe os campos já preenchidos.
+            """
+            form.titulo.data = post.titulo
+            form.corpo.data = post.corpo
+        elif form.validate_on_submit():
+            post.titulo = form.titulo.data
+            post.corpo = form.corpo.data
+            database.session.commit()
+            flash('Post Atualizado com Sucesso', 'alert-success')
+            return redirect(url_for('posts'))
+    else:
+        form = None
+    return render_template('post.html', post=post, form=form)
+
+
+@app.route('/post/<post_id>/excluir', methods=['GET', 'POST'])
+@login_required
+def excluir_post(post_id):
+    post = Post.query.get(post_id)
+    if current_user == post.autor:
+        database.session.delete(post)
+        database.session.commit()
+        flash('Post Excluído com Sucesso.', 'alert-success')
+        return redirect(url_for('posts'))
+    else:
+        abort(403)
 
 
 def salvar_imagem(imagem):

@@ -11,8 +11,8 @@
                 <br>
                 <form method="POST" action="" class="border p-4">
                     {{ form.csrf_token }}
-                    <legend>Criar Post</legend>
-                    <fieldset>
+                    <legend class="fbgm">Criar Post</legend>
+                    <fieldset class="text_blue">
                         <div class="form-group">
                             {{ form.titulo.label(class="form-control-label") }}
                             {% if form.titulo.errors %}

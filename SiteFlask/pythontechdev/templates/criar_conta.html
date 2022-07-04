@@ -5,15 +5,15 @@
 
     <div class="container">
         <div class="row m-4">
-            <h1 class="title">Crie sua Conta para Continuar</h1>
+            <h1 class="fbgm">Crie sua Conta para Continuar</h1>
         </div>
         <hr>
         <div class="row">
             <div class="col">
                 <form method="POST" action="" class="border m-3 p-4">
                     {{ form_criarconta.csrf_token }}
-                    <legend>CRIAR CONTA</legend>
-                    <fieldset>
+                    <legend class="fbgm">CRIAR CONTA</legend>
+                    <fieldset  class="text_blue">
                         <div class="form-group">
                             {{ form_criarconta.username.label(class="form-control-label") }}
                             {% if form_criarconta.username.errors %}
@@ -71,8 +71,8 @@
                 </form>
             </div>
             <div class="col border m-3 p-4">
-                <legend>ENTRAR</legend>
-                <p>Fazer login e contribuir.</p>
+                <legend class="fbgm">ENTRAR</legend>
+                <p class="text_blue">Fazer login e contribuir.</p>
                 <a href="{{ url_for('entrar') }}">
                     <button type="button" class="btn btn-outline-secondary bg-light shadow-sm">entrar</button>
                 </a>

@@ -5,20 +5,77 @@
 
     <div class="container">
         <br>
-        <h1>python_tech_dev</h1>
-        <hr>
-        <br>
-        <h6>Comunidade pt-br voltada para a discussão sobre tecnologias relacionadas à linguagem python.</h6>
     </div>
     <div class="container">
-          <div class="row bg-light border p-4">
-              <div class="col-1 col-sm-8">
-                  <h2>Discussões</h2>
-                  <p>Level 2: .col-8 .col-sm-6Level 2: .col-8 .col-sm-6Level 2: .col-8 .col-sm-6Level 2: .col-8 .col-sm-6Level</p>
+          <div class="row bg-light p-4">
+              <div class="col col-8">
+                  <h2 class="fbgm">python_tech_dev</h2>
+                  <hr class="fbgm">
+                  <br>
+                  <div align="center" style="display: inline_block">
+                      <img align="center" alt="Python" src="{{ url_for('static', filename='fotos_perfil/{}'.format('python-logo-master-v3-TM2.png')) }}" />
+                  </div>
+                  <br>
+                  <p class="text_blue" align="center">Comunidade pt-br</p>
+                  <p class="text_blue" align="center">Voltada para a discussão sobre tecnologias relacionadas à linguagem python</p>
+                  <hr class="fbgm">
+                  <div class="row">
+                      <div class="col col-4">
+                          <h6 class="text_blue_small" align="center">Iniciar</h6>
+                          <p class="text_blue">O Python se destaca por ser uma das linguagens mais fáceis de aprender.</p>
+                          <div class="text_azul">
+                             <a class="text_azul" href="https://www.python.org/about/gettingstarted/" target="_blank">Acesse o guia do iniciante</a>
+                          </div>
+                      </div>
+                      <div class="col col-4">
+                          <h6 class="text_blue_small" align="center">Download</h6>
+                          <p class="text_blue">Os instaladores do Python estão à disposição para download em todas as versões.</p>
+                          <div>
+                             <a class="text_azul" href="https://www.python.org/downloads/" target="_blank">Download Versões</a>
+                          </div>
+                      </div>
+                      <div class="col col-4">
+                          <h6 class="text_blue_small" align="center">Docs</h6>
+                          <p class="text_blue">A documentação da biblioteca padrão do Python, tutoriais e guias, estão disponíveis online.</p>
+                          <div class="text_azul">
+                             <a class="text_azul" href="https://docs.python.org/3/" target="_blank">Documentação</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div>
+                      <hr class="fbgm">
+                      <div class="mt-4" align="center">
+                        <a class="text_azul" href="https://www.python.org/" target="_blank">Acesse a plataforma oficial do Python para muito mais.</a>
+                      </div>
+                      <br>
+                      <p class="text_blue">
+                          Phasellus lacinia, libero sed condimentum rutrum, elit urna egestas orci, vitae aliquet lectus dui sed odio. Proin mattis met eget dui luctus dictum. Duis sit amet facilisis justo. Quisque euismod laoreet arcu eu gravida. Nulla quam arcu, porttitor nec mattis in, dapibus at diam. Etiam felis libero, ultricies id pretium id, ullamcorper eu enim. Cras sagittis vestibulum fermentum. Aenean accumsan massa ipsum, a efficitur urna vestibulum faucibus. Maecenas efficitur elementum lorem facilisis ultricies. Ut eu volutpat quam, vitae consectetur dolor. Vestibulum vulputate nulla hendrerit, fermentum lacus eu, consequat eros.
+                      </p>
+                      <p class="text_blue">
+                          Donec euismod mauris porttitor risus rutrum imperdiet. Praesent porttitor id dolor at sollicitudin. Aenean suscipit justo vel arcu luctus rhoncus. Vivamus vitae tempus sapien. Quisque a neque finibus, accumsan nunc quis, pulvinar ex. Nam ultrices varius ipsum, vel rhoncus turpis auctor quis. Quisque posuere mauris eget justo euismod gravida. Integer auctor neque et tincidunt mollis. Nam in nisi nec justo aliquet luctus. Curabitur aliquet venenatis orci, et molestie nisl porttitor pulvinar. Morbi ultrices, mi vel sollicitudin laoreet, ipsum tortor feugiat purus, sed scelerisque elit lectus sed turpis. Maecenas commodo mi at odio posuere porta.
+                      </p>
+                  </div>
               </div>
-              <div class="col-2 col-sm-3">
-                  <h2>Posts</h2>
-                  <p>Level 2: .col-4 .col-sm-6Level 2: .col-8 .col-sm-6Level 2: .col-8 .col-sm-6Level 2: .col-8 .col-sm-6</p>p>
+              <div class="col col-4">
+                  <h2 class="fbgm">Posts Recentes</h2>
+                  <hr class="fbgm">
+                  <div class=" text_blue">
+                        {% for post in posts[:6] %}
+                            <div class="container">
+                                <div class="row mt-4 p-3 meupost">
+                                    <div>
+                                        <a style="text-decoration: none" href="{{ url_for('exibir_post', post_id=post.id) }}">
+                                            <h3 class="text_azul">{{ post.titulo }}</h3>
+                                        </a>
+                                        <small class="text-muted" style="font-size: 12px">Data de Criação: {{ post.data_criacao.strftime('%d.%m.%Y') }}</small>
+                                    </div>
+                                    <div>
+                                        <p class="text_blue">{{ post.autor.username }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                  </div>
               </div>
           </div>
     </div>

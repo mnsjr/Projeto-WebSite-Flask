@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from pythontechdev.models import Usuario
 from flask_login import current_user
@@ -51,6 +51,7 @@ class FormEditarPerfil(FlaskForm):
     hab_frontend = BooleanField('Frontend')
     hab_backend = BooleanField('Backend')
     hab_ciencia_dados = BooleanField('Ciência de Dados')
+    hab_machine_learning = BooleanField('Machine Learning')
     hab_automacao = BooleanField('Automação de Processos')
     hab_web_scraping = BooleanField('Web Scraping')
     hab_agil = BooleanField('Metodologias Ágeis')
@@ -73,15 +74,13 @@ class FormEditarPerfil(FlaskForm):
                 raise ValidationError('Já existe um usuário com este e-mail. Cadastre outro e-mail.')
 
 
-class FormContato(FlaskForm):
-    name = StringField(label='Nome', validators=[DataRequired()])
-    email = StringField(label='E-mail', validators=[DataRequired(), Email(granular_message=True)])
-    message = TextAreaField(label='Mensagem')
-    submit = SubmitField(label="Enviar")
-
-
 class FormCriarPost(FlaskForm):
     titulo = StringField('Titulo do Post', validators=[DataRequired(), Length(2, 120)])
     corpo = TextAreaField('Escreva seu Post aqui', validators=[DataRequired()])
     botao_submit = SubmitField('Criar Post')
 
+
+class FormEditarPost(FlaskForm):
+    titulo = StringField('Titulo do Post', validators=[DataRequired(), Length(2, 120)])
+    corpo = TextAreaField('Escreva seu Post aqui', validators=[DataRequired()])
+    botao_submit = SubmitField('Confirmar Edição')

@@ -5,15 +5,15 @@
 
     <div class="container">
         <div class="row m-4">
-            <h1 class="title">Faça Login para Contribuir</h1>
+            <h1 class="fbgm">Faça Login para Contribuir</h1>
         </div>
         <hr>
         <div class="row">
             <div class="col">
                 <form method="POST" action="" class="border m-3 p-4">
                     {{ form_entrar.csrf_token }}
-                    <legend>ENTRAR</legend>
-                    <fieldset>
+                    <legend class="fbgm">ENTRAR</legend>
+                    <fieldset  class="text_blue">
                         <div class="form-group">
                             {{ form_entrar.email.label(class="form-control-label") }}
                             {% if form_entrar.email.errors %}
@@ -49,8 +49,8 @@
                 </form>
             </div>
             <div class="col border m-3 p-4">
-                <legend>CRIAR CONTA</legend>
-                <p>Se você ainda não tem uma conta. Vamos lá, leva apenas um minuto!</p>
+                <legend class="fbgm">CRIAR CONTA</legend>
+                <p  class="text_blue">Se você ainda não tem uma conta. Vamos lá, leva apenas um minuto!</p>
                 <a href="{{ url_for('criar_conta') }}">
                     <button type="button" class="btn btn-outline-secondary bg-light shadow-sm">criar conta</button>
                 </a>

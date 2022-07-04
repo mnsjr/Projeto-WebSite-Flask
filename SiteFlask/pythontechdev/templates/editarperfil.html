@@ -11,8 +11,8 @@
                 <br>
                 <form method="POST" action="" class="border p-4" enctype="multipart/form-data">
                     {{ form.csrf_token }}
-                    <legend>Editar Perfil</legend>
-                    <fieldset>
+                    <legend class="fbgm">Editar Perfil</legend>
+                    <fieldset class="text_blue">
                         <div class="form-group">
                             {{ form.username.label(class="form-control-label") }}
                             {% if form.username.errors %}
@@ -52,7 +52,7 @@
                         <br>
                         <hr>
                         <br>
-                        <legend>Habilidades</legend>
+                        <legend class="fbgm">Habilidades</legend>
                             {% for campo in form %}
                                 {% if 'hab_' in campo.name %}
                                     <div class="form-group">

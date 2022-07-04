@@ -17,6 +17,13 @@ class Usuario(database.Model, UserMixin):
     posts = database.relationship('Post', backref='autor', lazy=True)
     habilidades = database.Column(database.String, nullable=False, default='Não Informado')
 
+    def contar_posts(self):
+        """
+        Método da classe Usuário
+        :return: numero de posts do usuário
+        """
+        return len(self.posts)
+
 
 class Post(database.Model):
     id = database.Column(database.Integer, primary_key=True)

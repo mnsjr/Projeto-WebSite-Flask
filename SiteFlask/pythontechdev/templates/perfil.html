@@ -2,31 +2,38 @@
 
 
 {% block body %}
-
-    <div class="container mt-5 d-flex justify-content-center">
+    <div class="container">
+        <div class="row">
+            <div class="row m-4">
+                <h1 class="fbgm">Perfil de Usuário</h1>
+                <br>
+                <hr class="fbgm">
+            </div>
+        </div>
+    </div>
+    <div class="container mt-3 d-flex justify-content-center">
             <div class="card p-2">
                 <div class="d-flex align-items-center">
                     <div class="image pe-2"><img src="{{ foto_perfil }}" class="rounded" width="200"></div>
                 <div class="ml-3 w-100">
-                   <legend>Perfil de Usuário</legend>
-                   <h4 class="mb-0 mt-0">{{ current_user.username }}</h4>
-                   <span>{{ current_user.email }}</span>
+                   <p class="mb-0 mt-0 fbgm">{{ current_user.username }}</p>
+                   <span class="text_blue">{{ current_user.email }}</span>
                    <hr>
                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
                        {% if 'Não Informado' in current_user.habilidades %}
-                            <div class="d-flex flex-column">
+                            <div class="d-flex flex-column text_blue_small">
                                 <span class="articles">Techs</span>
                                 <span class="number1">0</span>
                             </div>
                        {% else %}
-                            <div class="d-flex flex-column">
-                                <span class="articles">Techs</span>
+                            <div class="d-flex flex-column text_blue_small">
+                                <span class="articles">Habilidades</span>
                                 <span class="number1">{{ current_user.habilidades.count(';') + 1 }}</span>
                             </div>
                         {% endif %}
-                        <div class="d-flex flex-column">
+                        <div class="d-flex flex-column text_blue_small">
                             <span class="rating">Posts</span>
-                            <span class="number3">0</span>
+                            <span class="number3">{{ current_user.contar_posts() }}</span>
                         </div>
                    </div>
                    <div class="button mt-2 d-flex flex-row align-items-center">
@@ -40,12 +47,13 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-4" style="text-align: center">
-            <legend>Habilidades</legend>
+            <legend class="fbgm">Habilidades</legend>
             {% for habilidade in current_user.habilidades.split(';') %}
-                <button type="button" class="btn btn-success mt-2" disabled>{{ habilidade }}</button>
+                <button type="button" class="btn btn-outline-secondary bg-light shadow-sm mt-2" disabled>{{ habilidade }}</button>
             {% endfor %}
         </div>
     </div>
+
 
     {% block form_editar_perfil %}
     {% endblock %}
