@@ -1,11 +1,10 @@
 # Projeto-WebSite-Flask
 
 ### Projeto | Portifólio - python_tech_dev
-
-#
+Deploy foi feito em <a href="heroku.com/" target="_blank">Heroku.com</a>
 
 <dvi class="row">
-  <a href="https://python-tech-dev.herokuapp.com/">Acesse: python_tech_dev</a>
+  <a href="https://python-tech-dev.herokuapp.com/" target="_blank">Acesse: python_tech_dev</a>
 </div>
 
 #
